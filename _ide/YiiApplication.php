@@ -11,10 +11,11 @@
 
 namespace yii\web;
 use v3toys\yii2\api\Api;
+use v3toys\yii2\api\ApiBase;
 use v3toys\yii2\api\ApiV04;
 
 /**
- * @property Api|ApiV04                    $v3toys
+ * @property Api|ApiV04|ApiBase                    $v3toys
  *
  * Class Application
  * @package yii\web
