@@ -92,7 +92,7 @@ abstract class ApiBase extends Component
      *
      * @return ApiResponseError|ApiResponseOk
      */
-    public function send($method, array $params)
+    public function send($method, array $params = [])
     {
         $request = [
             'v'                 => static::VERSION,

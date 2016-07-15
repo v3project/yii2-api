@@ -18,12 +18,6 @@ use yii\base\Component;
 class ApiResponseOk extends ApiResponse
 {
     /**
-     * данны соответствующие методу запроса
-     * @var mixed
-     */
-    public $data;
-
-    /**
      * @return bool
      */
     public function getIsError()

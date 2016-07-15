@@ -38,6 +38,12 @@ abstract class ApiResponse extends Component
      */
     public $method;
 
+    /**
+     * данные соответствующие методу запроса
+     * @var mixed
+     */
+    public $data;
+
 
     /**
      * Seerver response code
