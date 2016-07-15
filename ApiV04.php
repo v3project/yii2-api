@@ -11,7 +11,7 @@ namespace v3toys\yii2\api;
  *
  * @package v3toys\yii2\api
  */
-class ApiV04 extends Api
+class ApiV04 extends ApiBase
 {
     const VERSION = '0.4';
 }
