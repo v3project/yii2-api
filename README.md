@@ -38,6 +38,28 @@ How to use
 ]
 
 ```
+
+Examples
+----------
+
+```php
+
+$response = \Yii::$app->v3toys->send('getProductsDataByIds', [
+    'products_ids' => 217070
+]);
+
+if ($response->isError)
+{
+    echo $response->error_code;
+    echo $response->error_message;
+}
+
+if ($response->isOk)
+{
+    print_r($response->data);
+}
+
+```
 ___
 
 > [![skeeks!](https://gravatar.com/userimage/74431132/13d04d83218593564422770b616e5622.jpg)](http://skeeks.com)  
