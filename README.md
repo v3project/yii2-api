@@ -31,7 +31,10 @@ How to use
     //....
         'v3toys' =>
         [
-            'class'         => '\v3toys\yii2\api\ApiV04',
+            'class'             => '\v3toys\yii2\api\Api',
+            'url'               => 'http://www.v3toys.ru/pear-www/Kiwi_Shop/api.php',
+            'affiliate_key'     => 'fff',
+            'timeout'           => 12,
         ],
     //....
     ]
