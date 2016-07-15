@@ -75,10 +75,15 @@ abstract class ApiBase extends Component
         if (!$response->isOk)
         {
             \Yii::error($response->content, self::className());
-            return new ApiResponseError($dataResponse);
+            $responseObject = new ApiResponseError($dataResponse);
+        } else
+        {
+            $responseObject = new ApiResponseOk($dataResponse);
         }
 
-        return new ApiResponseOk($dataResponse);;
+        $responseObject->statusCode = $response->statusCode;
+
+        return $responseObject;
     }
 
     /**

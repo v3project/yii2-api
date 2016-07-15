@@ -62,6 +62,8 @@ if ($response->isOk)
     print_r($response->data);
 }
 
+print_r($response->statusCode);
+
 ```
 ___
 

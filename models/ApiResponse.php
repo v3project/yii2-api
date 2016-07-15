@@ -43,7 +43,7 @@ abstract class ApiResponse extends Component
      * Seerver response code
      * @var int
      */
-    public $code;
+    public $statusCode;
 
     /**
      * Ответны запрос ошибочный?
