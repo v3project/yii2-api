@@ -15,7 +15,7 @@ use v3toys\yii2\api\ApiBase;
 use v3toys\yii2\api\ApiV04;
 
 /**
- * @property Api|ApiV04|ApiBase                    $v3toys
+ * @property Api|ApiV04|ApiBase                    $v3toysApi
  *
  * Class Application
  * @package yii\web

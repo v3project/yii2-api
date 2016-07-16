@@ -15,6 +15,7 @@ use yii\httpclient\Client;
 
 /**
  * Class ApiBase
+ * @property string $version read-only
  *
  * @see http://www.v3toys.ru/index.php?nid=api
  * @package v3toys\yii2\api
@@ -102,5 +103,13 @@ abstract class ApiBase extends Component
         ];
 
         return $this->_send($request);
+    }
+
+    /**
+     * @return string
+     */
+    public function getVersion()
+    {
+        return static::VERSION;
     }
 }
