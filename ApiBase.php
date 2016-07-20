@@ -35,7 +35,7 @@ abstract class ApiBase extends Component
     /**
      * @var null|string ключ аффилиата в системе V3Project, если он передается то контроль доступа происходит по IP+"affiliate_key"
      */
-    public $affiliate_key = 'frr';
+    public $affiliate_key = '';
 
 
 
