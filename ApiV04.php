@@ -35,6 +35,45 @@ class ApiV04 extends ApiBase
         return $this->send('getStatus');
     }
 
+
+    /**
+     *
+     *  Метод getOrderStatus - возвращает статус заказа *** должен быть один из двух параметров (order_id или v3p_oid)
+     *
+     * "data": {
+            "status_id": 599,
+            "status": "Принят",
+        }
+     *
+     * @param $v3toysOrderId
+     * @return models\ApiResponseError|models\ApiResponseOk
+     */
+    public function getOrderStatusByV3toysId($v3toysOrderId)
+    {
+        return $this->send('getOrderStatus', [
+            'v3p_oid' => $v3toysOrderId
+        ]);
+    }
+
+    /**
+     *  Метод getOrderStatus - возвращает статус заказа *** должен быть один из двух параметров (order_id или v3p_oid)
+     *
+     * "data": {
+            "status_id": 599,
+            "status": "Принят",
+        }
+     *
+     *
+     * @param $orderId
+     * @return models\ApiResponseError|models\ApiResponseOk
+     */
+    public function getOrderStatusById($orderId)
+    {
+        return $this->send('getOrderStatus', [
+            'order_id' => $orderId
+        ]);
+    }
+
     /**
      * 3.1.3 Метод getProductsDataByIds - получение данных о товаре по коду
      *
