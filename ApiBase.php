@@ -7,6 +7,7 @@
  */
 namespace v3toys\yii2\api;
 
+use skeeks\cms\helpers\StringHelper;
 use v3toys\yii2\api\models\ApiResponseError;
 use v3toys\yii2\api\models\ApiResponseOk;
 use yii\base\Component;
@@ -71,7 +72,28 @@ abstract class ApiBase extends Component
             ->send();
         ;
 
-        $dataResponse = (array) Json::decode($response->content);
+        //Нам сказали это всегда json. А... нет, все мы люди, бывает и не json )
+        try
+        {
+            $dataResponse = (array) Json::decode($response->content);
+        } catch (\Exception $e)
+        {
+            \Yii::warning("Json api response error: " . $e->getMessage() . ". Response: \n{$response->content}", self::className());
+            //Лайф хак, вдруг разработчики апи оставили var dump
+            if ($pos = strpos($response->content, "{"))
+            {
+                $content = StringHelper::substr($response->content, $pos, StringHelper::strlen($response->content));
+
+                try
+                {
+                    $dataResponse = (array) Json::decode($content);
+                } catch (\Exception $e)
+                {
+                    \Yii::warning("Api response error: " . $response->content, self::className());
+                }
+            }
+        }
+
 
         if (!$response->isOk)
         {
@@ -88,7 +110,7 @@ abstract class ApiBase extends Component
     }
 
     /**
-     * @param $method вызываемый метод, список приведен далее
+     * @param $method           вызываемый метод, список приведен далее
      * @param array $params     параметры соответствующие методу запроса
      *
      * @return ApiResponseError|ApiResponseOk
