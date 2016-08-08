@@ -164,4 +164,73 @@ class ApiV04 extends ApiBase
             ],
         ], $request));*/
     }
+
+
+    /**
+     *
+     * 3.2.1 Метод createMessage - создает заявку и возвращает ее номер
+        ***Параметры этого метода полностью совпадают с данными ответа метода
+     *
+     * {
+        "v": "0.4",
+        "method": "getMessageDataById",
+        "data": {
+            "message_id": "3423",
+            "fake": 1,
+            "created_at": "2014-02-03 15:34:23",
+            "full_name": "Игорь",
+            "phone": "79261234567",
+            "email": "",
+            "products": [
+                {
+                    "product_id": 2352,
+                    "price": 2246,
+                    "quantity": 1
+                },
+            ],
+            "comment": "Тестовый комментарий"
+        }
+    }
+     *
+     * @param array $request
+     *
+     * @return models\ApiResponseError|models\ApiResponseOk
+     */
+    public function createMessage($request = [])
+    {
+        return $this->send('createMessage', $request);
+        /*return $this->send('createOrder', array_merge([
+            /*'full_name'             => "",
+            'phone'             => "",
+            'email'             => "",
+            'products'             => [
+                [
+                    'product_id' => '',
+                    'price' => '',
+                    'quantity' => '',
+                    'is_deleted' => '',
+                ]
+            ],  //имя клиента
+            'shipping_method' => '',
+            'shipping_cost' => '',
+            'shipping_data' => [
+                'city' => '',
+                'address' => '',
+            ],
+        ], $request));*/
+    }
+
+
+    /**
+     * 3.2.2 Метод getMessageStatus - возвращает статус заявки
+     * @param $messageId
+     *
+     * @return models\ApiResponseError|models\ApiResponseOk
+     */
+    public function getMessageStatus($messageId)
+    {
+        return $this->send('getMessageStatus', [
+            'message_id' => $messageId
+        ]);
+    }
 }
