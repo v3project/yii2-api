@@ -78,7 +78,7 @@ abstract class ApiBase extends Component
             $dataResponse = (array) Json::decode($response->content);
         } catch (\Exception $e)
         {
-            \Yii::warning("Json api response error: " . $e->getMessage() . ". Response: \n{$response->content}", self::className());
+            \Yii::error("Json api response error: " . $e->getMessage() . ". Response: \n{$response->content}", self::className());
             //Лайф хак, вдруг разработчики апи оставили var dump
             if ($pos = strpos($response->content, "{"))
             {
@@ -89,7 +89,7 @@ abstract class ApiBase extends Component
                     $dataResponse = (array) Json::decode($content);
                 } catch (\Exception $e)
                 {
-                    \Yii::warning("Api response error: " . $response->content, self::className());
+                    \Yii::error("Api response error: " . $response->content, self::className());
                 }
             }
         }
