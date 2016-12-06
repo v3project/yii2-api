@@ -60,7 +60,7 @@ abstract class ApiBase extends Component
             ]
         ]);
 
-        $response = $client->createRequest()
+        $request = $client->createRequest()
                 ->setMethod($method)
                 ->setUrl($this->url)
                 ->addHeaders(['Content-type' => 'application/json'])
@@ -68,9 +68,9 @@ abstract class ApiBase extends Component
                 ->setData($data)
                 ->setOptions([
                     'timeout' => $this->timeout
-                ])
-            ->send();
-        ;
+                ]);
+
+        $response= $request->send();
 
         //Нам сказали это всегда json. А... нет, все мы люди, бывает и не json )
         try
@@ -104,6 +104,8 @@ abstract class ApiBase extends Component
             $responseObject = new ApiResponseOk($dataResponse);
         }
 
+        $responseObject->request = $request;
+        $responseObject->response = $response;
         $responseObject->statusCode = $response->statusCode;
 
         return $responseObject;

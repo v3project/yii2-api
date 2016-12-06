@@ -8,6 +8,8 @@
 namespace v3toys\yii2\api\models;
 
 use yii\base\Component;
+use yii\httpclient\Request;
+use yii\httpclient\Response;
 
 /**
  * Описание общих полей запросов
@@ -50,6 +52,16 @@ abstract class ApiResponse extends Component
      * @var int
      */
     public $statusCode;
+
+    /**
+     * @var Request
+     */
+    public $request;
+
+    /**
+     * @var Response
+     */
+    public $response;
 
     /**
      * Ответны запрос ошибочный?
