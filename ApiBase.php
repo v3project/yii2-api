@@ -31,7 +31,7 @@ abstract class ApiBase extends Component
     /**
      * @var string
      */
-    public $url = 'http://www.v3toys.ru/pear-www/Kiwi_Shop/api.php';
+    public $url = 'https://v3toys.ru/pear-www/Kiwi_Shop/api.php';
 
     /**
      * @var null|string ключ аффилиата в системе V3Project, если он передается то контроль доступа происходит по IP+"affiliate_key"
@@ -45,6 +45,11 @@ abstract class ApiBase extends Component
      * @var int set timeout to 15 seconds for the case server is not responding
      */
     public $timeout = 30;
+
+    /**
+     * @var int
+     */
+    public $maxRedirects = 2;
 
     /**
      * @param array $data
@@ -67,7 +72,8 @@ abstract class ApiBase extends Component
                 ->addHeaders(['user-agent' => 'JSON-RPC PHP Client'])
                 ->setData($data)
                 ->setOptions([
-                    'timeout' => $this->timeout
+                    'timeout' => $this->timeout,
+                    'maxRedirects' => $this->maxRedirects,
                 ]);
 
         $response= $request->send();
